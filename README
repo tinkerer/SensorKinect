@@ -1,3 +1,38 @@
+I just made a few modifications to make it play nicely with Kinect. go to the CreateRedist directory run the RedistMaker. Then go to the created redist directory and install. You'll also need to make sure you're OpenNI configuration XML's specify 640x480 mode. Here's the modification I made to SamplesConfig.xml in the OpenNI/Samples/Config directory so I could run the OpenNI Samples. 
+
+<OpenNI>
+	<Licenses>
+		<License vendor="PrimeSense" key="0KOIk2JeIBYClPWVnMoRKn5cdY4="/>
+	</Licenses>
+	<Log writeToConsole="true" writeToFile="false">
+		<!-- 0 - Verbose, 1 - Info, 2 - Warning, 3 - Error (default) -->
+		<LogLevel value="3"/>
+		<Masks>
+			<Mask name="ALL" on="false"/>
+		</Masks>
+		<Dumps>
+		</Dumps>
+	</Log>
+	<ProductionNodes>
+	<Node type="Image">
+           <Configuration>
+                <MapOutputMode xRes="640" yRes="480" FPS="30"/>
+                <Mirror on="false"/>
+            </Configuration>
+        </Node> 
+
+		<Node type="Depth">
+			<Configuration>
+				<MapOutputMode xRes="640" yRes="480" FPS="30"/>
+				<Mirror on="true"/>
+			</Configuration>
+		</Node>
+		<Node type="User" />
+		<Node type="Hands" />
+		<Node type="Gesture" />
+	</ProductionNodes>
+</OpenNI>
+
 PrimeSense Sensor Module for OpenNI (Version 5.0.1.31 Stable version - Apr 11th 2010)
 -------------------------------------------------------------------------------------
 
